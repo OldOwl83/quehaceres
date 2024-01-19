@@ -1,0 +1,50 @@
+@import '../../globals.scss';
+
+header {
+    @include flex-cont;
+    margin: auto;
+    height: 40px;
+    background-color: $primary-dark-color;
+    border: 1px solid $black;
+
+    h1 {
+        width: 95%;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 26px;
+        text-align: center;
+    }
+
+    span {
+        width: 5%;
+
+        cursor: pointer;
+    }
+}
+
+#main-container {
+    @include flex-cont;
+
+    aside {
+        width: 20%;
+
+        a {
+            display: block;
+            padding: 3px;
+
+            font-size: 3.2rem;
+            color: $black;
+            text-align: center;
+            text-decoration: none;
+
+            border-bottom: 1px solid $black;
+        }
+
+        a:visited {
+            color: $black;
+        }
+    }
+
+    #todo-container {
+        width: 80%;
+    }
+}

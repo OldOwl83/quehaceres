@@ -1,0 +1,33 @@
+
+$primary-dark-color: rgb(73, 146, 187);
+$primary-light-color: #f2eaff;
+$black: #666;
+
+@mixin flex-cont( $direc: row, $justif: space-around, $align: center ) {
+    display: flex;
+    flex-direction: $direc;
+    justify-content: $justif;
+    align-items: $align;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cantarell', sans-serif;
+}
+
+html {
+    font-size: .8vw;
+}
+
+
+body {
+    user-select: none;
+}
+
+#root {
+    height: 98vh;
+    margin: 0 auto;
+    padding: 3px;
+}

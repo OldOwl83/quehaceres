@@ -3,25 +3,40 @@ const path = require('node:path')
 const { ipcMain } = require( 'electron' );
 
 const { client } = require( "../db/dbConnection" );
-const { getTodosByList, insertNewList } = require( "../db/dbApi" );
+const { 
+  getAllLists, insertNewList, updateList, deleteList, 
+  getTodosByList, insertNewTodo, updateTodo, deleteTodo 
+} = require( "../db/dbApi" );
 
 
 const createWindow = () => {
   const win = new BrowserWindow({
+    title: 'Quehaceres',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     },
     width: 800,
     height: 600,
     autoHideMenuBar: true,
+    frame: false,
   })
-  win.webContents.openDevTools()
-  win.loadURL('http://localhost:5173/')
+  
+  ipcMain.on( 'devTools', () => win.webContents.openDevTools() )
+
+  win.loadURL('http://localhost:5173')
 }
 
 app.whenReady().then(() => {
-  ipcMain.handle( 'getTodosByList', getTodosByList )
+  ipcMain.handle( 'getAllLists', getAllLists )
   ipcMain.handle( 'insertNewList', insertNewList )
+  ipcMain.handle( 'updateList', updateList )
+  ipcMain.handle( 'deleteList', deleteList )
+  ipcMain.handle( 'getTodosByList', getTodosByList )
+  ipcMain.handle( 'insertNewTodo', insertNewTodo )
+  ipcMain.handle( 'updateTodo', updateTodo )
+  ipcMain.handle( 'deleteTodo', deleteTodo )
+  ipcMain.on( 'exit', () => app.quit() )
+
 
   createWindow()
 
