@@ -1,0 +1,67 @@
+@import '../../globals.scss';
+
+#list-viewer {
+    width: 100%;
+    height: 84%;
+    border-bottom: $light-border;
+
+    #list-name-input {
+        @include flex-cont($justif: start);
+        padding: 2% 20px;
+
+        input {
+            padding: 0 6px;
+            font-size: 4rem;
+            border: 2px solid transparent;
+            pointer-events: none;
+
+            &:focus {
+                outline: none;
+            }
+            
+            &:read-write {
+                @include input-border;
+                pointer-events: all;
+                
+            }
+        }
+
+        span {
+            margin-left: 5px;
+            color: darken($primary-dark-color, 10);
+        }
+    }
+
+    #todo-displayer {
+        width: 80%;
+        margin: 0 auto;
+
+        border: 1px solid black;
+
+        .todo-viewer {
+            @include flex-cont($justif: space-between);
+            width: 90%;
+            margin: 0 auto;
+
+            border: 1px solid black;
+
+            span.fav{
+                color: yellow;
+            }
+        }
+    }
+}
+
+#todo-input-container {
+    @include flex-cont;
+    width: 100%;
+    height: 16%;
+
+    #todo-input {
+        width: 80%;
+        padding: 2% 10px;
+
+        font-size: 2.4rem;
+        @include input-border;
+    }
+}

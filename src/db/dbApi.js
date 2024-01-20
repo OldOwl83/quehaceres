@@ -106,13 +106,13 @@ async function insertNewTodo( event, todoDescr, listId ){
 }
 
 
-async function updateTodo( event, todoDescr, todoFavor, todoDone, listId ){
+async function updateTodo( event, todoDescr, todoFavor, todoDone, todoId ){
     try {
         await client.query('BEGIN')
         
         const res = await client.query(
             'UPDATE todo SET description = $1::text, favourite = $2::boolean, done = $3::boolean WHERE id = $4::integer RETURNING id',
-            [ todoDescr, todoFavor, todoDone, listId ]
+            [ todoDescr, todoFavor, todoDone, todoId ]
         )
        
         await client.query('COMMIT')

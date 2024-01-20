@@ -26,9 +26,10 @@ export default function GralLayout() {
         <div id="main-container">
             <aside id="side-bar">
             {
-                lists.map( list => <NavLink key={ list.id } to={ list.id.toString() } >
-                    { list.name }
-                </NavLink>)
+                lists.toSorted( ( l1, l2 ) => l2.id - l1.id ).map( 
+                    list => <NavLink key={ list.id } to={ list.id.toString() } >
+                        { list.name }
+                    </NavLink>)
             }
             </aside>
             <div id="todo-container">

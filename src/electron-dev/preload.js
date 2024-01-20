@@ -20,8 +20,8 @@ contextBridge.exposeInMainWorld('dbApi', {
     'insertNewTodo', todoDescr, listId 
   ),
 
-  updateTodo: ( todoDescr, todoFavor, todoDone, listId ) => ipcRenderer.invoke( 
-    'updateTodo', todoDescr, todoFavor, todoDone, listId
+  updateTodo: ( todoDescr, todoFavor, todoDone, todoId ) => ipcRenderer.invoke( 
+    'updateTodo', todoDescr, todoFavor, todoDone, todoId
   ),
   
   deleteTodo: ( todoId ) => ipcRenderer.invoke( 'deleteTodo', todoId ),

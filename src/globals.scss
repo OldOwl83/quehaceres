@@ -1,7 +1,8 @@
 
-$primary-dark-color: rgb(73, 146, 187);
+$primary-dark-color: rgb(168, 162, 223);
 $primary-light-color: #f2eaff;
 $black: #666;
+$light-details: #c9c6bd;
 
 @mixin flex-cont( $direc: row, $justif: space-around, $align: center ) {
     display: flex;
@@ -9,6 +10,17 @@ $black: #666;
     justify-content: $justif;
     align-items: $align;
 }
+
+
+$light-border: 1px solid $light-details;
+
+@mixin input-border {
+    border: 2px solid darken($primary-dark-color, 10);
+    border-radius: 6px;
+}
+
+
+$height-header: 38px;
 
 
 * {
@@ -24,10 +36,11 @@ html {
 
 body {
     user-select: none;
+    height: 100vh;
+    overflow-y: hidden;
 }
 
 #root {
-    height: 98vh;
+    height: 100%;
     margin: 0 auto;
-    padding: 3px;
 }

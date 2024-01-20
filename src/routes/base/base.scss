@@ -1,17 +1,20 @@
 @import '../../globals.scss';
 
+
 header {
     @include flex-cont;
     margin: auto;
-    height: 40px;
+    height: $height-header;
     background-color: $primary-dark-color;
     border: 1px solid $black;
-
+    
     h1 {
         width: 95%;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-size: 26px;
         text-align: center;
+
+        -webkit-app-region: drag;
     }
 
     span {
@@ -24,8 +27,13 @@ header {
 #main-container {
     @include flex-cont;
 
+    height: calc(100% - $height-header);
+
     aside {
         width: 20%;
+        height: 100%;
+
+        border-right: $light-border;
 
         a {
             display: block;
@@ -36,15 +44,27 @@ header {
             text-align: center;
             text-decoration: none;
 
-            border-bottom: 1px solid $black;
+            border-bottom: $light-border;
+
+            transition: all .2s;
         }
 
         a:visited {
             color: $black;
         }
+
+        a:hover {
+            background-color: $light-details;
+        }
+
+        a.active {
+            background-color: lighten($primary-dark-color, 10);
+        }
     }
 
     #todo-container {
+        @include flex-cont($direc: column, $justif: space-between);
         width: 80%;
+        height: 100%;
     }
 }
