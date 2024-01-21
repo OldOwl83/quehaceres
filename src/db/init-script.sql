@@ -7,5 +7,5 @@ CREATE TABLE todo (
     description TEXT NOT NULL, 
     favourite BOOLEAN DEFAULT FALSE,
     done BOOLEAN DEFAULT FALSE,
-    list INTEGER REFERENCES list(id)
+    list INTEGER REFERENCES list(id) ON DELETE CASCADE
 );

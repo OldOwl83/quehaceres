@@ -25,11 +25,12 @@ export default function TodoInput({ currentListId }) {
         setTodoInput( '' );
     }
 
-
+console.log(currentListId)
     return (
         <input
             id="todo-input"
             type="text"
+            disabled={ isNaN( Number( currentListId ) ) }
             placeholder="Ingrese nuevo quehacer..."
             value={ todoInput }
             onChange={ e => setTodoInput( e.target.value ) }

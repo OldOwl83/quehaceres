@@ -11,6 +11,7 @@
         padding-left: 5%;
 
         input {
+            max-width: 80%;
             padding: 0 6px;
             font-size: 2rem;
 
@@ -25,7 +26,6 @@
             &:read-write {
                 @include input-border;
                 pointer-events: all;
-                
             }
         }
 
@@ -112,6 +112,10 @@
 
         font-size: 1rem;
         @include input-border;
+
+        &[disabled] {
+            background-color: #aaa;
+        }
     }
 
     #todo-input:focus {

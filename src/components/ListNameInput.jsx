@@ -28,6 +28,20 @@ export default function ListNameInput({ activeList }) {
     }
 
 
+    function handleListDelete() {
+        fetcher.submit(
+            {
+                listId: activeList.id
+            }, 
+            {
+                method: 'post',
+                action: '/delete-list',
+                encType: "application/x-www-form-urlencoded",
+            }
+        )
+    }
+
+
     return (
         <div id="list-name-input">
             <input
@@ -57,6 +71,7 @@ export default function ListNameInput({ activeList }) {
             />
             {
                 activeList.id &&
+                <>
                 <span 
                     className="material-symbols-rounded"
                     onClick={ () => {
@@ -67,6 +82,11 @@ export default function ListNameInput({ activeList }) {
                         inputRef.current.focus()
                     }}
                 >edit</span>
+                <span 
+                    className="material-symbols-rounded"
+                    onClick={ handleListDelete } 
+                >delete</span>
+                </>
             }
         </div>
     )

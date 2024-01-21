@@ -52,7 +52,7 @@ header {
             border-bottom: $light-border;
         }
 
-        a, label {
+        a, label, p{
             display: block;
             padding: 3px;
 
@@ -86,13 +86,29 @@ header {
             background-color: lighten($primary-dark-color, 10);
         }
 
-        #fav-link {
-            @include flex-cont;
+        #fav-link, p, #new-list-name-input {
+            @include flex-cont($justif: start);
+
+            overflow-x: hidden;
 
             span {
+                margin: 0 6px;
                 font-size: 1.3rem;
                 color: darken($primary-dark-color, 15);
             }
+        }
+
+        #new-list-input {
+            max-width: 80%;
+            outline: none;
+            border: none;
+
+            font-size: 1.2rem;
+            color: $black;
+
+            background-color: transparent;
+            
+            transition: all .2s;
         }
     }
 
