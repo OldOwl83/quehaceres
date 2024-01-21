@@ -7,11 +7,14 @@
 
     #list-name-input {
         @include flex-cont($justif: start);
-        padding: 2% 20px;
+        height: 18%;
+        padding-left: 5%;
 
         input {
             padding: 0 6px;
-            font-size: 4rem;
+            font-size: 2rem;
+
+            background-color: transparent;
             border: 2px solid transparent;
             pointer-events: none;
 
@@ -27,6 +30,7 @@
         }
 
         span {
+            font-size: 1.6rem;
             margin-left: 5px;
             color: darken($primary-dark-color, 10);
         }
@@ -34,19 +38,64 @@
 
     #todo-displayer {
         width: 80%;
+        height: 76%;
         margin: 0 auto;
+        padding: 6px;
 
-        border: 1px solid black;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+            background-color: #aaa;
+            border-radius: 6px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: darken($primary-dark-color, 10);
+            border-radius: 6px;
+        }
+
+        // &::-webkit-scrollbar-button {
+        //     display: none;
+        // }
 
         .todo-viewer {
-            @include flex-cont($justif: space-between);
-            width: 90%;
-            margin: 0 auto;
+            @include flex-cont($justif: start);
+            width: 92%;
+            margin: 0 auto 14px;
+            padding: 12px;
 
-            border: 1px solid black;
+            background-color: $primary-light-color;
+            border-radius: 6px;
+            box-shadow: 0 0 4px 2px $primary-dark-color;
+
+
+            p, textarea {
+                width: 84%;
+                height: auto;
+                margin-left: 14px;
+                font-size: .9rem;
+                text-align: left;
+                resize: none;
+            }
+
+            textarea {
+                padding: 3px;
+                outline: none;
+                @include input-border;
+            }
+
+            span {
+                font-size: 1.4rem;
+                cursor: pointer;
+            }
+
+            span.star {
+                margin: 0 2%;
+            }
 
             span.fav{
-                color: yellow;
+                color: darken($primary-dark-color, 15);
             }
         }
     }
@@ -61,7 +110,13 @@
         width: 80%;
         padding: 2% 10px;
 
-        font-size: 2.4rem;
+        font-size: 1rem;
         @include input-border;
+    }
+
+    #todo-input:focus {
+        outline: none;
+        @include input-border;
+        background-color: $primary-light-color;
     }
 }

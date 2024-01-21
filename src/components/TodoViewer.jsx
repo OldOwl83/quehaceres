@@ -1,9 +1,11 @@
+
 import { useFetcher } from "react-router-dom"
+import TodoDescrInput from "./TodoDescrInput";
 
 
 export default function TodoViewer({ todo }) {
-
     const fetcher = useFetcher();
+
 
     function handleTodoUpdate( field, value ) {
         fetcher.submit(
@@ -20,6 +22,18 @@ export default function TodoViewer({ todo }) {
     }
 
 
+    function handleTodoDelete( todoId ) {
+        fetcher.submit(
+            { todoId }, 
+            {
+                method: 'post',
+                action: '/delete-todo',
+                encType: "application/x-www-form-urlencoded",
+            }
+        )
+    }
+
+
     return (
         <div className="todo-viewer">
             <input
@@ -27,11 +41,19 @@ export default function TodoViewer({ todo }) {
                 checked={ todo.done }
                 onChange={ e => handleTodoUpdate( "done", e.target.checked ) }
             />
-            <p>{ todo.description }</p>
+            <TodoDescrInput
+                key={ todo.description }
+                todo={ todo }
+                handleTodoUpdate={ handleTodoUpdate }
+            />
             <span
-                className={ "material-symbols-outlined" + ( todo.favourite ? " fav" : "") }
+                className={ "material-symbols-rounded star" + ( todo.favourite ? " fav" : "") }
                 onClick={ () => handleTodoUpdate( "favourite", !todo.favourite )}
-            >star</span>
+            >family_star</span>
+            <span
+                className={ "material-symbols-rounded delete" }
+                onClick={ () => handleTodoDelete( todo.id )}
+            >delete</span>
         </div>
     )
 }

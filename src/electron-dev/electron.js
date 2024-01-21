@@ -5,7 +5,7 @@ const { ipcMain } = require( 'electron' );
 const { client } = require( "../db/dbConnection" );
 const { 
   getAllLists, insertNewList, updateList, deleteList, 
-  getTodosByList, insertNewTodo, updateTodo, deleteTodo 
+  getTodosByList, insertNewTodo, updateTodo, deleteTodo, getFavouriteTodos 
 } = require( "../db/dbApi" );
 
 
@@ -15,6 +15,8 @@ const createWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     },
+    minWidth: 600,
+    minHeight: 460,
     width: 800,
     height: 600,
     autoHideMenuBar: true,
@@ -32,6 +34,7 @@ app.whenReady().then(() => {
   ipcMain.handle( 'updateList', updateList )
   ipcMain.handle( 'deleteList', deleteList )
   ipcMain.handle( 'getTodosByList', getTodosByList )
+  ipcMain.handle( 'getFavouriteTodos', getFavouriteTodos )
   ipcMain.handle( 'insertNewTodo', insertNewTodo )
   ipcMain.handle( 'updateTodo', updateTodo )
   ipcMain.handle( 'deleteTodo', deleteTodo )

@@ -16,6 +16,8 @@ contextBridge.exposeInMainWorld('dbApi', {
 
   getTodosByList: ( listId ) => ipcRenderer.invoke( 'getTodosByList', listId ),
 
+  getFavouriteTodos: ( listId ) => ipcRenderer.invoke( 'getFavouriteTodos' ),
+
   insertNewTodo: ( todoDescr, listId ) => ipcRenderer.invoke( 
     'insertNewTodo', todoDescr, listId 
   ),

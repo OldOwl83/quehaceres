@@ -5,8 +5,7 @@ header {
     @include flex-cont;
     margin: auto;
     height: $height-header;
-    background-color: $primary-dark-color;
-    border: 1px solid $black;
+    border-bottom: $light-border;
     
     h1 {
         width: 95%;
@@ -35,11 +34,29 @@ header {
 
         border-right: $light-border;
 
-        a {
+        #list-list-container {
+            height: 60%;
+            margin-bottom: 30%;
+
+            overflow-y: auto;
+        }
+
+        h2 {
+            padding: 10% 0;
+
+            font-size: 1.4rem;
+            color: $primary-dark-color;
+            text-align: center;
+            text-decoration: none;
+
+            border-bottom: $light-border;
+        }
+
+        a, label {
             display: block;
             padding: 3px;
 
-            font-size: 3.2rem;
+            font-size: 1.2rem;
             color: $black;
             text-align: center;
             text-decoration: none;
@@ -47,6 +64,14 @@ header {
             border-bottom: $light-border;
 
             transition: all .2s;
+        }
+
+        label {
+            font-size: 1.1rem;
+
+            input {
+                margin-right: 6px;
+            }
         }
 
         a:visited {
@@ -59,6 +84,15 @@ header {
 
         a.active {
             background-color: lighten($primary-dark-color, 10);
+        }
+
+        #fav-link {
+            @include flex-cont;
+
+            span {
+                font-size: 1.3rem;
+                color: darken($primary-dark-color, 15);
+            }
         }
     }
 

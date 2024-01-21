@@ -86,6 +86,16 @@ async function getTodosByList( event, listId ){
 }
 
 
+async function getFavouriteTodos( event ){
+    try {
+        const res = await client.query('SELECT * FROM todo WHERE favourite = TRUE;')
+        return res.rows
+    } catch (err) {
+        throw err;
+    }
+}
+
+
 async function insertNewTodo( event, todoDescr, listId ){
     try {
         await client.query('BEGIN')
@@ -147,5 +157,5 @@ async function deleteTodo( event, todoId ){
 
 module.exports = { 
     getAllLists, insertNewList, updateList, deleteList,
-    getTodosByList, insertNewTodo, updateTodo, deleteTodo
+    getTodosByList, getFavouriteTodos, insertNewTodo, updateTodo, deleteTodo
 }

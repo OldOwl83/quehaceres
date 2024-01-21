@@ -55,16 +55,19 @@ export default function ListNameInput({ activeList }) {
                     readOnly: true
                 })}
             />
-            <span 
-                className="material-symbols-outlined"
-                onClick={ () => {
-                    setListInput({
-                        ...listInput,
-                        readOnly: false
-                    })
-                    inputRef.current.focus()
-                }}
-            >edit</span>
+            {
+                activeList.id &&
+                <span 
+                    className="material-symbols-rounded"
+                    onClick={ () => {
+                        setListInput({
+                            ...listInput,
+                            readOnly: false
+                        })
+                        inputRef.current.focus()
+                    }}
+                >edit</span>
+            }
         </div>
     )
 }
