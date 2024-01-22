@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import {
-  createBrowserRouter,
+  createHashRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
@@ -21,7 +21,7 @@ import { action as deleteTodoAction } from './routes/actions/delete-todo';
 
 
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     id: 'root',

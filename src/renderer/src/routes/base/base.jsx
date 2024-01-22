@@ -1,8 +1,9 @@
 
+import { useState } from "react";
 import { NavLink, Outlet, json, useLoaderData } from "react-router-dom";
 
 import './base.scss';
-import { useState } from "react";
+import logo from './react.svg';
 import NewListNameInput from "../../components/NewListNameInput";
 
 
@@ -23,7 +24,7 @@ export default function GralLayout() {
     return (
         <>
         <header>
-            <img src="/src/assets/react.svg" alt="logo"/>
+            <img src={ logo } alt="logo"/>
             <h1>Quehaceres</h1>
             <span 
                 className="material-symbols-rounded"

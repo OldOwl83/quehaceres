@@ -63,15 +63,15 @@ body {
 // Fonts
 @font-face {
     font-family: 'Grape';
-    src: url('./fonts/GrapeNuts-Regular.ttf') format('truetype');
+    src: url('/src/assets/GrapeNuts-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Raleway';
-    src: url('./fonts/Raleway-VariableFont_wght.ttf') format('truetype');
+    src: url('/src/assets/Raleway-VariableFont_wght.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Reenie';
-    src: url('./fonts/ReenieBeanie-Regular.ttf') format('truetype');
+    src: url('/src/assets/ReenieBeanie-Regular.ttf') format('truetype');
 }
