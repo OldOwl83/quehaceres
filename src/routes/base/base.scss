@@ -2,22 +2,26 @@
 
 
 header {
-    @include flex-cont;
-    margin: auto;
+    @include flex-cont($justif: space-between);
+    
     height: $height-header;
     border-bottom: $light-border;
-    
+
+    img {
+        margin-left: 6px;
+    }
     h1 {
-        width: 95%;
+        flex-grow: 1;
         font-family: 'Grape', sans-serif;
-        font-size: 32px;
+        font-size: 30px;
         text-align: center;
 
         -webkit-app-region: drag;
     }
 
     span {
-        width: 5%;
+        margin-right: 6px;
+        font-size: $height-header - 6 !important;
 
         cursor: pointer;
     }

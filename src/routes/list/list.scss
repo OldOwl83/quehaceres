@@ -44,21 +44,6 @@
 
         overflow-y: auto;
 
-        &::-webkit-scrollbar {
-            width: 6px;
-            background-color: #aaa;
-            border-radius: 6px;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background: darken($primary-dark-color, 10);
-            border-radius: 6px;
-        }
-
-        // &::-webkit-scrollbar-button {
-        //     display: none;
-        // }
-
         .todo-viewer {
             @include flex-cont($justif: start);
             width: 92%;

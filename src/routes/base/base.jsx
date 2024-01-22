@@ -23,6 +23,7 @@ export default function GralLayout() {
     return (
         <>
         <header>
+            <img src="/src/assets/react.svg" alt="logo"/>
             <h1>Quehaceres</h1>
             <span 
                 className="material-symbols-rounded"
