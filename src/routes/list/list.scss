@@ -13,7 +13,7 @@
         input {
             max-width: 80%;
             padding: 0 6px;
-            font-size: 2rem;
+            font-size: 1.6rem;
 
             background-color: transparent;
             border: 2px solid transparent;
@@ -74,7 +74,8 @@
                 width: 84%;
                 height: auto;
                 margin-left: 14px;
-                font-size: .9rem;
+                font-family: 'Reenie', sans-serif;
+                font-size: 1.4rem;
                 text-align: left;
                 resize: none;
             }
@@ -108,9 +109,10 @@
 
     #todo-input {
         width: 80%;
-        padding: 2% 10px;
+        padding: 2% 6px;
 
-        font-size: 1rem;
+        font-family: 'Reenie', sans-serif;
+        font-size: 1.8rem;
         @include input-border;
 
         &[disabled] {

@@ -25,7 +25,7 @@ export default function TodoInput({ currentListId }) {
         setTodoInput( '' );
     }
 
-console.log(currentListId)
+
     return (
         <input
             id="todo-input"

@@ -9,8 +9,8 @@ header {
     
     h1 {
         width: 95%;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: 26px;
+        font-family: 'Grape', sans-serif;
+        font-size: 32px;
         text-align: center;
 
         -webkit-app-region: drag;
@@ -56,7 +56,7 @@ header {
             display: block;
             padding: 3px;
 
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: $black;
             text-align: center;
             text-decoration: none;
@@ -67,11 +67,14 @@ header {
         }
 
         label {
-            font-size: 1.1rem;
-
             input {
                 margin-right: 6px;
             }
+        }
+
+        a {
+            font-size: 1.2rem;
+            font-family: 'Grape', sans-serif;
         }
 
         a:visited {
@@ -87,7 +90,7 @@ header {
         }
 
         #fav-link, p, #new-list-name-input {
-            @include flex-cont($justif: start);
+            @include flex-cont($justif: center);
 
             overflow-x: hidden;
 

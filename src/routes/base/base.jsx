@@ -1,3 +1,4 @@
+
 import { NavLink, Outlet, json, useLoaderData } from "react-router-dom";
 
 import './base.scss';
@@ -40,7 +41,7 @@ export default function GralLayout() {
                 }
                     <NavLink id="fav-link" to={ 'Favoritos' }><span
                         className={ "material-symbols-rounded star" }
-                    >family_star</span>Favourites</NavLink>
+                    >family_star</span>Favoritos</NavLink>
                     <NewListNameInput />
                 </div>
 
