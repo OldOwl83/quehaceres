@@ -1,20 +1,25 @@
 import { resolve } from 'path'
-import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
+import { defineConfig, externalizeDepsPlugin, loadEnv } from 'electron-vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
-  main: {
-    plugins: [externalizeDepsPlugin()]
-  },
-  preload: {
-    plugins: [externalizeDepsPlugin()]
-  },
-  renderer: {
-    resolve: {
-      alias: {
-        '@renderer': resolve('src/renderer/src')
+export default defineConfig(({ command, mode }) => {
+  
+  const env = loadEnv(mode)
+  
+  return {
+      main: {
+        plugins: [externalizeDepsPlugin()]
+      },
+      preload: {
+        plugins: [externalizeDepsPlugin()]
+      },
+      renderer: {
+        resolve: {
+          alias: {
+            '@renderer': resolve('src/renderer/src')
+          }
+        },
+        plugins: [react()]
       }
-    },
-    plugins: [react()]
   }
 })

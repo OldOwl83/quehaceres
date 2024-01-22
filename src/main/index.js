@@ -1,20 +1,32 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
-import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
+import { join } from 'path'
+
 import icon from '../../resources/icon.png?asset'
 
+import { client } from "./db/dbConnection";
+import {
+  getAllLists, insertNewList, updateList, deleteList, 
+  getTodosByList, insertNewTodo, updateTodo, deleteTodo, getFavouriteTodos
+} from "./db/dbApi"
+
+
 function createWindow() {
-  // Create the browser window.
+  
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    title: 'Quehaceres',
+    minWidth: 600,
+    minHeight: 460,
+    width: 800,
+    height: 600,
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
-    }
+      sandbox: true
+    },
+    frame: false,
   })
 
   mainWindow.on('ready-to-show', () => {
@@ -39,6 +51,18 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  ipcMain.handle( 'getAllLists', getAllLists )
+  ipcMain.handle( 'insertNewList', insertNewList )
+  ipcMain.handle( 'updateList', updateList )
+  ipcMain.handle( 'deleteList', deleteList )
+  ipcMain.handle( 'getTodosByList', getTodosByList )
+  ipcMain.handle( 'getFavouriteTodos', getFavouriteTodos )
+  ipcMain.handle( 'insertNewTodo', insertNewTodo )
+  ipcMain.handle( 'updateTodo', updateTodo )
+  ipcMain.handle( 'deleteTodo', deleteTodo )
+  ipcMain.on( 'exit', () => app.quit() )
+
+
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 
@@ -65,4 +89,9 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
+})
+
+app.on('quit', () => {
+  console.log('Conexión a la bd cerrada.')
+  client.end();
 })

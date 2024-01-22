@@ -1,20 +1,36 @@
-import { contextBridge } from 'electron'
-import { electronAPI } from '@electron-toolkit/preload'
+import { contextBridge, ipcRenderer } from "electron";
 
-// Custom APIs for renderer
-const api = {}
 
-// Use `contextBridge` APIs to expose Electron APIs to
-// renderer only if context isolation is enabled, otherwise
-// just add to the DOM global.
-if (process.contextIsolated) {
-  try {
-    contextBridge.exposeInMainWorld('electron', electronAPI)
-    contextBridge.exposeInMainWorld('api', api)
-  } catch (error) {
-    console.error(error)
-  }
-} else {
-  window.electron = electronAPI
-  window.api = api
-}
+contextBridge.exposeInMainWorld('dbApi', {
+
+  getAllLists: () => ipcRenderer.invoke('getAllLists'),
+
+  insertNewList: ( listName ) => ipcRenderer.invoke( 
+    'insertNewList', listName 
+  ),
+
+  updateList: ( newListName, listId ) => ipcRenderer.invoke( 
+    'updateList', newListName, listId 
+  ),
+
+  deleteList: ( listId ) => ipcRenderer.invoke( 'deleteList', listId ),
+
+  getTodosByList: ( listId ) => ipcRenderer.invoke( 'getTodosByList', listId ),
+
+  getFavouriteTodos: ( listId ) => ipcRenderer.invoke( 'getFavouriteTodos' ),
+
+  insertNewTodo: ( todoDescr, listId ) => ipcRenderer.invoke( 
+    'insertNewTodo', todoDescr, listId 
+  ),
+
+  updateTodo: ( todoDescr, todoFavor, todoDone, todoId ) => ipcRenderer.invoke( 
+    'updateTodo', todoDescr, todoFavor, todoDone, todoId
+  ),
+  
+  deleteTodo: ( todoId ) => ipcRenderer.invoke( 'deleteTodo', todoId ),
+})
+
+
+contextBridge.exposeInMainWorld( 'winHandlers', {
+  exit: () => ipcRenderer.send( 'exit' ),
+})
