@@ -44,6 +44,9 @@ export default function GralLayout() {
                     <NavLink id="fav-link" to={ 'Favoritos' }><span
                         className={ "material-symbols-rounded star" }
                     >family_star</span>Favoritos</NavLink>
+                    <NavLink id="fav-link" to={ 'stats' }><span
+                        className={ "material-symbols-rounded star" }
+                    >query_stats</span>Estadísticas</NavLink>
                     <NewListNameInput />
                 </div>
 

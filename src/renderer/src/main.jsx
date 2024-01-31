@@ -18,6 +18,7 @@ import { action as deleteListAction } from './routes/actions/delete-list';
 import { action as insertTodoAction } from './routes/actions/insert-todo';
 import { action as updateTodoAction } from './routes/actions/update-todo';
 import { action as deleteTodoAction } from './routes/actions/delete-todo';
+import Stats from "./routes/stats/stats";
 
 
 
@@ -36,6 +37,10 @@ const router = createHashRouter([
         path: ':listId',
         element: <ListScreen />,
         loader: todoLoader
+      },
+      {
+        path: 'stats',
+        element: <Stats />
       }
     ]
   },
